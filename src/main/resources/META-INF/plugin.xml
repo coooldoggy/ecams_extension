@@ -1,7 +1,6 @@
-<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.coooldoggy.ecamsextension</id>
-    <name>ecams_extension</name>
+    <name>Ecams_extension</name>
     <vendor>coooldoggy</vendor>
 
     <depends>com.intellij.modules.platform</depends>
@@ -9,10 +8,22 @@
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.coooldoggy.ecamsextension.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
+        <toolWindow factoryClass="com.github.coooldoggy.ecamsextension.toolWindow.EcamsNavigationTool" id="Ecams"/>
+        <!-- ECAMS 설정 UI 추가 -->
+        <applicationConfigurable displayName="ECAMS 서버 설정" id="com.github.coooldoggy.ecamsextension.settings.EcamsSettingsConfigurable"/>
     </extensions>
+    <!-- GitSyncAction 등록 (메뉴 실행 가능) -->
+    <actions>
+        <action id="com.github.coooldoggy.ecamsextension.action.GitSyncAction"
+                class="com.github.coooldoggy.ecamsextension.action.GitSyncAction"
+                text="ECAMS Git Sync"
+                description="ECAMS 프로젝트를 Git과 동기화하고 체크인/체크아웃을 수행합니다.">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+    </actions>
 
     <applicationListeners>
-        <listener class="com.github.coooldoggy.ecamsextension.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
+        <listener class="com.github.coooldoggy.ecamsextension.listeners.MyApplicationActivationListener"
+                  topic="com.intellij.openapi.application.ApplicationActivationListener"/>
     </applicationListeners>
 </idea-plugin>

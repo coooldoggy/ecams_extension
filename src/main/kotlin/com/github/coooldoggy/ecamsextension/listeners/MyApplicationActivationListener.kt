@@ -7,6 +7,7 @@ import com.intellij.openapi.wm.IdeFrame
 internal class MyApplicationActivationListener : ApplicationActivationListener {
 
     override fun applicationActivated(ideFrame: IdeFrame) {
-        thisLogger().warn("Don't forget to remove all non-needed sample code files with their corresponding registration entries in `plugin.xml`.")
+        thisLogger().warn("Lets make something more easier than before...")
+        thisLogger().info("ECAMS IntelliJ 플러그인이 활성화되었습니다!")
     }
 }
